@@ -16,7 +16,8 @@
 // });
 
 Route::get('/', 'PagesController@index');
-Route::get('/add', 'PostsController@store')->name('add');
+Route::get('/add', 'PostsController@add')->name('add');
+Route::post('/store', 'PostsController@store')->name('store');
 
 Auth::routes();
 

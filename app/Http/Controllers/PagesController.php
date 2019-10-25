@@ -9,6 +9,6 @@ class PagesController extends Controller
 {
     public function index(){
         $post = new Post();
-        return view('pages.index')->with('posts', $post::all());
+        return view('pages.index')->with('posts', $post::paginate(5));
     }   
 }
