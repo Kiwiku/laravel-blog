@@ -15,10 +15,10 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'PagesController@index');
-Route::get('/add', 'PostsController@add')->name('add');
-Route::post('/store', 'PostsController@store')->name('store');
-Route::get('/single/{id?}', 'PagesController@displaySingle')->name('single');
+Route::get('/', 'PagesController@index'); //main page
+Route::get('/add', 'PostsController@add')->name('add'); //addForm
+Route::post('/store', 'PostsController@store')->name('store'); //store in database
+Route::get('/single/{id?}', 'PagesController@displaySingle')->name('single'); //display single post
 
 Auth::routes();
 

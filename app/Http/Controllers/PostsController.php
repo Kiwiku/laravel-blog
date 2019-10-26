@@ -27,6 +27,7 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->user_id = auth()->user()->id;
+        $post->cover_image = '';
         $post->save();
 
         return redirect('/')->with('success', 'Post created succesfully');

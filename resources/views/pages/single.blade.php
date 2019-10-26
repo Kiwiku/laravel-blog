@@ -2,8 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h1>{{ $post->title }}</h1>
-    <h2>{{ $post->content }}</h2>
-    <h5>Created at: {{$post->created_at}}</h5>
+    @if (isset($post))
+        <h1>{{ $post->title }}</h1>
+        {!! $post->content !!}
+        <h5>Created at: {{$post->created_at}}</h5>
+    @endif
+    
 </div>
 @endsection

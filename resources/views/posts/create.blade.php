@@ -11,7 +11,17 @@
             </div>
             <div class="form-group">
                 {{Form::label('content', 'Content')}}
-                {{Form::textarea('content', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
+                {{Form::textarea('content', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Content Text'])}}
+                <script>
+                        ClassicEditor
+                            .create( document.querySelector( '#article-ckeditor' ) )
+                            .then( editor => {
+                                console.log( editor );
+                            })
+                            .catch( error => {
+                                console.error( error );
+                            });
+                </script>
             </div>
             {{-- <div class="form-group">
                 {{Form::file('cover_image')}}

@@ -11,8 +11,8 @@ class PagesController extends Controller
         $post = new Post();
         return view('pages.index')->with('posts', $post::paginate(5));
     }
-    public function displaySingle($id = null){
+    public function displaySingle($id){
         $post = new Post();
-        return view('pages.single')->with('post', $post::find($id));
+        return view('pages.single')->with('post', $post::findOrFail($id));
     }   
 }
