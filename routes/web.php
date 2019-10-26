@@ -18,6 +18,7 @@
 Route::get('/', 'PagesController@index');
 Route::get('/add', 'PostsController@add')->name('add');
 Route::post('/store', 'PostsController@store')->name('store');
+Route::get('/single/{id?}', 'PagesController@displaySingle')->name('single');
 
 Auth::routes();
 

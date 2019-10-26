@@ -8,6 +8,7 @@
             @foreach ($posts as $post)
             <div class='col-sm-6'>
                 <h2>{{$post->title}}</h2>
+                <a class="nav-link" href="{{route('single') . '/' . $post->post_id}}">{{ __('Read more...') }}</a>
             </div>
             @endforeach
             <br><br>

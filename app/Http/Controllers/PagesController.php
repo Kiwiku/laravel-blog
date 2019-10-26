@@ -10,5 +10,9 @@ class PagesController extends Controller
     public function index(){
         $post = new Post();
         return view('pages.index')->with('posts', $post::paginate(5));
+    }
+    public function displaySingle($id = null){
+        $post = new Post();
+        return view('pages.single')->with('post', $post::find($id));
     }   
 }

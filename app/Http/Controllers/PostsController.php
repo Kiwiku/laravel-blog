@@ -31,6 +31,4 @@ class PostsController extends Controller
 
         return redirect('/')->with('success', 'Post created succesfully');
     }
-
-
 }
