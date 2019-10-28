@@ -92,10 +92,27 @@ class PostsController extends Controller
             'title' => 'required',
             'content' => 'required',
         ]);
+
+        //Handle file upload
+        if($request->hasFile('cover_image')){
+            //Get filename
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            //Get just filename
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //Get just ext
+            $ext = $request->file('cover_image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$ext;
+            //Upload image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        }
         
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        if($request->hasFile('cover_image')){
+            $post->cover_image = $fileNameToStore;
+        }
         $post->save();
         $array = ['success' => 'Post edited successfully', 'posts' => $posts];
         return  redirect('/')->with($array);
