@@ -1,24 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Recent posts</h1>
-    <div class="well">
-        <div class='col-sm-12'>
-        @if (count($posts) > 0) <!-- check if there are any posts in the query -->
-            @foreach ($posts as $post)
-            <div class='col-sm-6'>
-                <h2>{{$post->title}}</h2>
-                <a class="nav-link" href="{{route('single') . '/' . $post->post_id}}">{{ __('Read more...') }}</a>
-            <p>Created by: {{$post->user->name}}</p>
+    <h1>Posts</h1>
+    @if(count($posts) > 0)
+        @foreach($posts as $post)
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <h3><a href="{{route('single') . '/' . $post->post_id}}">{{$post->title}}</a></h3>
+                        <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+                    </div>
+                </div>
             </div>
-            @endforeach
-            <br><br>
-            {{ $posts->links() }}
-        @else
-            <h2>No posts!</h2>
-        @endif
-        </div>
-    </div>
-</div>
+        @endforeach
+        {{$posts->links()}}
+    @else
+        <p>No posts found</p>
+    @endif
 @endsection
+
+{{-- <a class="nav-link" href="{{route('single') . '/' . $post->post_id}}">{{ __('Read more...') }}</a> --}}

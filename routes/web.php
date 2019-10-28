@@ -15,10 +15,17 @@
 //     return view('welcome');
 // });
 
+//Handle display of posts
 Route::get('/', 'PagesController@index'); //main page
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); //users dashboard
+Route::get('/single/{id?}', 'PostsController@displaySingle')->name('single'); //display single post
+
+//Handle changes of posts
 Route::get('/add', 'PostsController@add')->name('add'); //addForm
+Route::delete('/destroy/{id}', 'PostsController@destroy')->name('destroy');
 Route::post('/store', 'PostsController@store')->name('store'); //store in database
-Route::get('/single/{id?}', 'PagesController@displaySingle')->name('single'); //display single post
+Route::get('/edit/{id?}', 'PostsController@edit')->name('edit');
+Route::put('/update/{id?}', 'PostsController@update')->name('update');
 
 Auth::routes();
 
